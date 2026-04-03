@@ -18,9 +18,9 @@ def extract_label_from_node(node: str) -> str:
 
 
 def get_node_color(node: str) -> str:
-    if "[РЈР”РђР›:" in node:
+    if "[УДАЛ:" in node:
         return "#FF6B6B"
-    if "[Р—РђРњ:" in node:
+    if "[ЗАМ:" in node:
         return "#FFD700"
     if node.startswith("N_"):
         return "#87CEEB"
@@ -53,7 +53,7 @@ def save_single_frame(frame: EvolutionFrame, folder: str):
         nx.draw_networkx_edges(graph, pos, edge_color="gray", arrows=True, arrowsize=20, ax=ax)
         nx.draw_networkx_labels(graph, pos, {n: graph.nodes[n]["label"] for n in graph.nodes}, font_size=10, ax=ax)
 
-    ax.set_title(f"РљР°РґСЂ {frame.frame_number}: {frame.timestamp}\n{frame.description}", fontsize=14, fontweight="bold")
+    ax.set_title(f"Кадр {frame.frame_number}: {frame.timestamp}\n{frame.description}", fontsize=14, fontweight="bold")
     ax.axis("off")
     stats_text = "\n".join([f"{k}: {v}" for k, v in frame.statistics.items()])
     ax.text(0.02, 0.98, stats_text, transform=ax.transAxes, fontsize=10, va="top", bbox=dict(boxstyle="round", facecolor="white", alpha=0.9))
