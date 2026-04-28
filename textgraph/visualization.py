@@ -5,6 +5,8 @@ from .analysis import build_dependency_edges, get_syntax_role
 from .models import EvolutionFrame
 
 try:
+    import matplotlib
+    matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import networkx as nx
 

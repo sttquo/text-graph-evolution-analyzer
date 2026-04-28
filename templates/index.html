@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Graph Evolution Analyzer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <p class="eyebrow">Text Graph Evolution Analyzer</p>
+            <h1>Анализ текста</h1>
+            <p class="lead">Вставь два текста вручную или выбери встроенный пример. После запуска откроется отдельная страница с результатом.</p>
+        </section>
+
+        <section class="panel">
+            <form action="/analyze" method="post" class="stack">
+                <label for="example_id">Быстрый старт на примере</label>
+                <select id="example_id" name="example_id">
+                    <option value="">Не использовать пример</option>
+                    {% for example in examples %}
+                    <option value="{{ example.id }}">{{ example.title }}</option>
+                    {% endfor %}
+                </select>
+
+                <div class="grid">
+                    <div class="field">
+                        <label for="original_text">Исходный текст</label>
+                        <textarea id="original_text" name="original_text" rows="12" placeholder="Вставь исходный текст или код"></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="edited_text">Отредактированный текст</label>
+                        <textarea id="edited_text" name="edited_text" rows="12" placeholder="Вставь изменённый текст или код"></textarea>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit">Запустить анализ</button>
+                    {% if not visualization_available %}
+                    <p class="hint">PNG-графики отключены. Для них нужны `networkx` и `matplotlib`.</p>
+                    {% endif %}
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

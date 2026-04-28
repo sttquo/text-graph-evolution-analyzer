@@ -22,6 +22,7 @@ class EvolutionFrame:
 
 @dataclass
 class AnalysisArtifacts:
+    run_id: str
     folder: str
     original_tokens: List[str]
     edited_tokens: List[str]

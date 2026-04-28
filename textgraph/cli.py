@@ -1,3 +1,4 @@
+from .examples import EXAMPLES
 from .pipeline import analyze_dynamic_evolution
 from .visualization import VISUALIZATION_AVAILABLE
 
@@ -20,19 +21,11 @@ def main():
     choice = input("\nВаш выбор (1/2/3): ").strip()
 
     if choice == "1":
-        print("\n" + "=" * 70)
-        print("ПРИМЕР 1: РЕДАКТУРА НОВОСТНОЙ ЗАМЕТКИ")
-        print("=" * 70)
-        original1 = "The company launched a new product yesterday, which was developed over three years and cost approximately $5 million."
-        edited1 = "Yesterday, the firm released a $5M product developed over three years."
-        analyze_dynamic_evolution(original1, edited1, "Редактура новостной заметки")
-
-        print("\n" + "=" * 70)
-        print("ПРИМЕР 2: УПРОЩЕНИЕ ТЕКСТА")
-        print("=" * 70)
-        original2 = "The man who was sitting on the bench quickly stood up and walked away."
-        edited2 = "The man stood up and walked away."
-        analyze_dynamic_evolution(original2, edited2, "Упрощение текста")
+        for index, example in enumerate(EXAMPLES, start=1):
+            print("\n" + "=" * 70)
+            print(f"ПРИМЕР {index}: {example['title'].upper()}")
+            print("=" * 70)
+            analyze_dynamic_evolution(example["original"], example["edited"], example["title"])
     elif choice == "2":
         print("\n" + "=" * 70)
         print("ВВОД СВОИХ ТЕКСТОВ")

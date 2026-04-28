@@ -1,0 +1,259 @@
+:root {
+    color-scheme: light;
+    --bg: #f6f1e8;
+    --panel: #fffaf2;
+    --panel-strong: #f1e4cf;
+    --text: #1f1b16;
+    --muted: #65584a;
+    --line: #d8c6ad;
+    --accent: #a54b2a;
+    --accent-strong: #7a2d17;
+    --shadow: rgba(73, 42, 20, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(255, 220, 178, 0.75), transparent 34%),
+        radial-gradient(circle at top right, rgba(214, 109, 72, 0.18), transparent 24%),
+        linear-gradient(180deg, #fbf6ef 0%, var(--bg) 100%);
+}
+
+.page {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 32px 0 56px;
+}
+
+.hero {
+    padding: 28px 30px;
+}
+
+.hero.compact {
+    padding-bottom: 18px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 6vw, 4.6rem);
+    font-weight: 800;
+}
+
+h2 {
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+
+h3 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.lead {
+    max-width: 760px;
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.panel {
+    margin-top: 18px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--panel) 92%, white 8%);
+    box-shadow: 0 18px 40px var(--shadow);
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: 600;
+}
+
+select,
+textarea,
+button,
+.link-button {
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    font: inherit;
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    color: var(--text);
+    background: #fffdf9;
+}
+
+textarea,
+pre {
+    font-family: "Cascadia Code", "Consolas", monospace;
+}
+
+textarea {
+    min-height: 260px;
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+button,
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    color: white;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 24px rgba(122, 45, 23, 0.18);
+}
+
+.hint {
+    margin: 0;
+    color: var(--muted);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.image-grid img {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+.image-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: zoom-in;
+}
+
+.image-button img {
+    display: block;
+}
+
+.report-list {
+    display: grid;
+    gap: 16px;
+}
+
+.report-card {
+    padding: 18px;
+    border-radius: 20px;
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.45;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(18, 12, 8, 0.86);
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox img {
+    max-width: min(96vw, 1600px);
+    max-height: 92vh;
+    border-radius: 18px;
+    background: white;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    font-size: 2rem;
+    line-height: 1;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 20px;
+    }
+
+    .panel,
+    .hero {
+        padding: 20px;
+    }
+}
